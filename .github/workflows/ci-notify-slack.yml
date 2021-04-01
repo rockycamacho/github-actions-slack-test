@@ -20,7 +20,7 @@ jobs:
               username: 'Rebase Notifier',
               attachments: [{
                 color: 'good',
-                text: '${{ github.actor }} merged <${{ github.event.pull_request.url }}|${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}> into `${{ github.event.pull_request.base.ref }}` from `${{ github.event.pull_request.head.ref }}`. Please rebase @here'
+                text: '${{ github.actor }} merged <${{ github.event.pull_request.url }}|${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}> into `${{ github.event.pull_request.base.ref }}` from `${{ github.event.pull_request.head.ref }}`. Please rebase <!channel>'
               }]
             }
         env:
