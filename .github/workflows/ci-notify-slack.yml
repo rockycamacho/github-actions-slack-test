@@ -17,9 +17,10 @@ jobs:
           fields: workflow,job,commit,repo,ref,author,took
           custom_payload: |
             {
+              username: 'Rebase Notifier',
               attachments: [{
                 color: 'good',
-                text: '${process.env.AS_AUTHOR} merged `${github.event.pull_request.title} #${github.event.pull_request.number}` into `${github.event.pull_request.base.ref}` from `${github.event.pull_request.head.ref}`'
+                text: '${{ github.actor }} merged `${{ github.event.pull_request.title }} #${{ github.event.pull_request.number }}` into `${{ github.event.pull_request.base.ref }}` from `${{ github.event.pull_request.head.ref }}`'
               }]
             }
         env:
