@@ -10,17 +10,17 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      name: Slack Notification
-      uses: 8398a7/action-slack@v3
-      with:
-        status: custom
-        fields: workflow,job,commit,repo,ref,author,took
-        custom_payload: |
-          {
-            attachments: [{
-              color: 'good',
-              text: '${process.env.AS_AUTHOR} merged `${github.event.pull_request.title} #${github.event.pull_request.number}` into `${github.event.pull_request.base.ref}` from `${github.event.pull_request.head.ref}`'
-            }]
-          }
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - uses: 8398a7/action-slack@v3
+        name: Slack Notification
+        with:
+          status: custom
+          fields: workflow,job,commit,repo,ref,author,took
+          custom_payload: |
+            {
+              attachments: [{
+                color: 'good',
+                text: '${process.env.AS_AUTHOR} merged `${github.event.pull_request.title} #${github.event.pull_request.number}` into `${github.event.pull_request.base.ref}` from `${github.event.pull_request.head.ref}`'
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
